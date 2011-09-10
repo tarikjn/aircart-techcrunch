@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  gtin: 1
+  picture_url: MyString
+  price: 
+
+two:
+  name: MyString
+  gtin: 1
+  picture_url: MyString
+  price: 
