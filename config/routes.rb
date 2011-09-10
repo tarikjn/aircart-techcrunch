@@ -1,8 +1,12 @@
 Aircart::Application.routes.draw do
 
-  resources :line_items
-
-  resources :carts
+  resources :carts do
+  
+    member do
+      resources :line_items
+    end
+  
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
