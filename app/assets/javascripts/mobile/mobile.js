@@ -5,5 +5,5 @@
 // the compiled file.
 //
 //= require lib
-//= require mobile
-//= require_tree ./backbone
+//= require_self
+//= require_tree ../backbone
