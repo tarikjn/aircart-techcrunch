@@ -6,9 +6,14 @@ gem 'rails', '3.1.0'
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
 gem 'httparty'
+gem 'thin'
 
 group :test, :development do
   gem 'sqlite3'
+end
+
+group :production do
+  gem 'pg'
 end
 
 # Gems used only for assets and not required
