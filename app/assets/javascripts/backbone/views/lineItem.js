@@ -20,6 +20,10 @@ AirCart.Views.LineItem = Backbone.View.extend({
 		var qty = this.model.get('quantity');
 		qty += Number($(event.target).data("amount"));
 		this.model.set({"quantity":qty});
+		
+		if (0 === qty) {
+			this.remove(event);
+		}
 	},
 	
 	onQuantityChange : function(lineItem, quantity) {

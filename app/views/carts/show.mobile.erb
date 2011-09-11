@@ -4,7 +4,7 @@
 <% else %>
 <form action="javascript:window.location.hash='item/'+$('#upc_query').val();">
 	<input type="text" id="upc_query" placeholder="UPC Code"></input>
-	<input type="submit" class="button" value="FIND"></input>
+	<input type="submit" class="button" value="ADD"></input>
 </form>
 <% end %>
 </header>
@@ -38,6 +38,6 @@
 </script>
 
 <footer>
-	<a href="javascript:void(0);" class="button center ras fr mrs">PAY</a>
+	<a href="<%= checkout_cart_path(@cart) %>" class="button center ras fr mrs">PAY</a>
 	<span class="total" id="total"></span>
 </footer>
