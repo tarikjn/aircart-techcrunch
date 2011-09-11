@@ -1,3 +1,7 @@
-<li>
-	<img src="{{ attributes.image }}" />
+<li id="item_{{attributes.gtin}}">
+	<h3>{{ attributes.product.name }}: {{ attributes.quantity }}</h3>
+	<img src="{{ attributes.product.picture_url }}" /><br />
+	<a href="javascript:void(0);">Remove</a>
+	<a href="javascript:void(0);">+</a>
+	<a href="javascript:void(0);">-</a>
 </li>

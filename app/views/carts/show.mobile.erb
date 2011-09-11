@@ -35,7 +35,8 @@
 	
 	new AirCart.Views.Cart({
 		"el":$("#cart_<%= @cart.id %>"),
-		"model":new Backbone.Collection(cart)
+		"model":new Backbone.Collection(cart),
+		"template":$("#lineItemTemplate").html()
 	});
 })();
 </script>
