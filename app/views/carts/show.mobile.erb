@@ -1,5 +1,12 @@
 <header>
-	<a href="http://zxing.appspot.com/scan?ret=<%= current_url %>%23item/{CODE}&SCAN_FORMATS=UPC_A" class="button ras center middle">Scan</a>
+<% if android_device? %>
+<a href="http://zxing.appspot.com/scan?ret=<%= current_url %>%23item/{CODE}&SCAN_FORMATS=UPC_A" class="button ras center middle">SCAN</a>
+<% else %>
+<form action="javascript:window.location.hash='item/'+$('#upc_query').val();">
+	<input type="text" id="upc_query" placeholder="UPC Code"></input>
+	<input type="submit"></input>
+</form>
+<% end %>
 </header>
 
 <div id="cart_<%= @cart.id %>">
@@ -31,6 +38,6 @@
 </script>
 
 <footer>
-	<a href="javascript:void(0);" class="button center ras fr mrs">Checkout</a>
+	<a href="javascript:void(0);" class="button center ras fr mrs">PAY</a>
 	<span class="total" id="total"></span>
 </footer>
