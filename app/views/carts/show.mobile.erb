@@ -1,10 +1,45 @@
-<p id="notice"><%= notice %></p>
+<header>
+	<a href="http://zxing.appspot.com/scan?ret=<%= current_url %>%23item/{CODE}&SCAN_FORMATS=UPC_A" class="button">Scan</a>
+</header>
 
-<p>
-  <b>Email:</b>
-  <%= @cart.email %>
-</p>
+<div id="cart_<%= @cart.id %>">
+	
+</div>
 
+<script id="lineItemTemplate" type="text/x-underscore-tmpl">
+<%= render :file => "underscore_templates/line_item.html" %>
+</script>
 
-<%= link_to 'Edit', edit_cart_path(@cart) %> |
-<%= link_to 'Back', carts_path %>
+<script type="text/javascript">
+(function() {
+	var cart = [
+		{
+			"quantity" : 1,
+			"gtin":"076183202012",
+			"product" : {
+				"name":"Peach Snapple",
+				"price":150,
+				"picture_url":"http://images.productwiki.com/upload/images/snapple_peach_ice_tea-300-210.jpg"
+			}
+		},
+		{
+			"quantity" : 2,
+			"gtin":"075140005024",
+			"product" : {
+				"name":"Crystal Geyser Water",
+				"price":99,
+				"picture_url":"http://www3.images.coolspotters.com/photos/93954/crystal-geyser-natural-alpine-spring-water-profile.jpg"
+			}
+		}
+	];
+	
+	new AirCart.Views.Cart({
+		"el":$("#cart_<%= @cart.id %>"),
+		"model":new Backbone.Collection(cart)
+	});
+})();
+</script>
+
+<footer>
+	<a href="javascript:void(0);">Checkout</a>
+</footer>

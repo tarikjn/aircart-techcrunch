@@ -6,3 +6,4 @@
 //
 //= require lib
 //= require mobile
+//= require_tree ./backbone
