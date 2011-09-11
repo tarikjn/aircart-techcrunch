@@ -84,6 +84,13 @@ class CartsController < ApplicationController
   
   def checkout
     @cart = Cart.find(params[:id])
+    
+    # ugly hack
+    respond_to { |format|
+      format.any(:html, :mobile) {
+        render :template => "carts/checkout.html.erb"
+      }
+    }
   end
   
   def pay
