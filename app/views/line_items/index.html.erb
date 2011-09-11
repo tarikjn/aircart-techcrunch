@@ -15,7 +15,7 @@
   <tr>
 	<td><%= image_tag line_item.product.picture_url %></td>
     <td><%= line_item.product.name %></td>
-    <td><%= line_item.product.price %></td>
+    <td><%= number_to_currency (line_item.product.price / 100) %></td>
     <td><%= line_item.quantity %></td>
     <td><%= link_to 'Show', cart_line_item_path(@cart, line_item) %></td>
     <td><%= link_to 'Edit', edit_cart_line_item_path(@cart, line_item) %></td>
@@ -30,4 +30,4 @@
 <%= link_to 'Checkout', checkout_cart_path(@cart) %>
 
 <br />
-Total: <%= number_to_currency @cart.total %>
+Total: <%= number_to_currency (@cart.total / 100) %>
