@@ -3,11 +3,21 @@ AirCart.Routers.Main = Backbone.Router.extend({
 		"item/:upc" : "lineItem"
 	},
 	
-	initialize : function() {
+	initialize : function(options) {
 		// do initialization stuff
+		this.model = options.model;
+		this.view = options.view;
 	},
 	
 	lineItem : function(upc) {
-		alert(upc);
+		var cartId = this.model.get('id');
+		
+		$.post('/carts/'+cartId+'/line_items', {
+			"line_items" : {
+				"gtin" : upc
+			}
+		}, function(foo, bar, baz) {
+			debugger;
+		}, "json");
 	}
 });
