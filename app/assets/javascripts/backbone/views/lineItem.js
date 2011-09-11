@@ -24,5 +24,6 @@ AirCart.Views.LineItem = Backbone.View.extend({
 	
 	onQuantityChange : function(lineItem, quantity) {
 		this.$(".quantity").html(quantity);
+		this.$(".cost").html("$" + parseFloat((quantity * lineItem.get('product').price)/100).toFixed(2) );
 	}
 });
