@@ -13,7 +13,7 @@ AirCart.Routers.Main = Backbone.Router.extend({
 		var cartId = this.model.get('id');
 		
 		$.post('/carts/'+cartId+'/line_items', {
-			"line_items" : {
+			"line_item" : {
 				"gtin" : upc
 			}
 		}, function(foo, bar, baz) {
