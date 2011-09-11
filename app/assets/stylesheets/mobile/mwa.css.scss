@@ -25,6 +25,7 @@ header .button, footer .button {
 	font-size:34px;
 	color:green; text-decoration:none; font-weight:bold;
 }
+footer .button { width:auto; padding-left:8px; padding-right:8px; }
 
 body {
 	margin-top:72px; margin-bottom:72px;
