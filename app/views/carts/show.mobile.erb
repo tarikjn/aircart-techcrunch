@@ -32,11 +32,19 @@
 			}
 		}
 	];
-	
-	new AirCart.Views.Cart({
+	var cartModel = new Backbone.Model({
+		"id":<%= @cart.id %>,
+		"line_items":new Backbone.Collection(cart)
+	});
+	var cartView = new AirCart.Views.Cart({
 		"el":$("#cart_<%= @cart.id %>"),
-		"model":new Backbone.Collection(cart),
+		"model":cartModel,
 		"template":$("#lineItemTemplate").html()
+	});
+	
+	new AirCart.Routers.Main({
+		"model":cartModel,
+		"view":cartView
 	});
 })();
 </script>

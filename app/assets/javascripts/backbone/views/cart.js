@@ -12,7 +12,7 @@ AirCart.Views.Cart = Backbone.View.extend({
 		$(this.el).append(list);
 		
 		var that = this;
-		this.model.each(function(item) {
+		this.model.get('line_items').each(function(item) {
 			// create a new view for each item in the cart
 			var itemView = new AirCart.Views.LineItem({
 				"model":item,

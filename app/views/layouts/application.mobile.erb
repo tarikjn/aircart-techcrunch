@@ -10,13 +10,12 @@
 	<%= javascript_include_tag "mobile" %>
 </head>
 <body>
+<%= yield %>
+
 <script type="text/javascript">
 (function() {
-	new AirCart.Routers.Main();
 	Backbone.history.start();
 })();
 </script>
-
-<%= yield %>
 </body>
 </html>
