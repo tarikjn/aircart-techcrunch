@@ -1,8 +1,12 @@
 AirCart.Views.Cart = Backbone.View.extend({
 	
 	initialize : function(options) {
+		_.bindAll(this);
+		
 		// make a template out of the markup
 		this.template = _.template(options.template);
+		
+		this.model.get('line_items').bind("add", this.addItem);
 		this.render();
 	},
 	
@@ -12,14 +16,15 @@ AirCart.Views.Cart = Backbone.View.extend({
 		$(this.el).append(list);
 		
 		var that = this;
-		this.model.get('line_items').each(function(item) {
-			// create a new view for each item in the cart
-			var itemView = new AirCart.Views.LineItem({
-				"model":item,
-				"template":that.template
-			});
-			list.append(itemView.render());
+		this.model.get('line_items').each(this.addItem);
+	},
+	
+	addItem : function(lineItem) {
+		var itemView = new AirCart.Views.LineItem({
+			"model":lineItem,
+			"template":this.template
 		});
+		this.$('ul').append(itemView.render());
 	}
 	
 });
