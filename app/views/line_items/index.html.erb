@@ -1,5 +1,4 @@
-<h1>Listing line_items</h1>
-<p>For cart: <%= @cart.email %></p>
+<h2>Your cart</h2>
 
 <table>
   <tr>
@@ -29,3 +28,6 @@
 
 <%= link_to 'New Line item', new_cart_line_item_path(@cart) %>
 <%= link_to 'Checkout', checkout_cart_path(@cart) %>
+
+<br />
+Total: <%= number_to_currency @cart.total %>

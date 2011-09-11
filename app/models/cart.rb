@@ -18,4 +18,15 @@ class Cart < ActiveRecord::Base
     
   end
   
+  def total
+    # in cents
+    t = 0
+    
+    self.line_items.each do |li|
+      t += (li.product.price * li.quantity)
+    end
+    
+    t
+  end
+  
 end

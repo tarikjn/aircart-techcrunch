@@ -1,12 +1,41 @@
+<h2>Your cart</h2>
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Email:</b>
-  <%= @cart.email %>
-</p>
-<p>
-	<%= link_to 'Content', cart_line_items_path(@cart) %>
-</p>
+<div class="add-item">
+	<%= form_for([@cart, @line_item]) do |f| %>
 
-<%= link_to 'Edit', edit_cart_path(@cart) %> |
-<%= link_to 'Back', carts_path %>
+	  <div class="field">
+	    <%= f.label :gtin, "Bar code" %> <%= f.text_field :gtin %><button type="submit">Add</button>
+	    
+	  </div>
+	<% end %>
+</div>
+
+<table class="cart">
+  <tr>
+	<th>Picture</th>
+    <th>Product</th>
+	<th>Price</th>
+    <th>Quantity</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @cart.line_items.each do |line_item| %>
+  <tr>
+	<td class="image"><%= image_tag line_item.product.picture_url %></td>
+    <td><%= line_item.product.name %></td>
+    <td><%= line_item.product.price %></td>
+    <td><%= line_item.quantity %></td>
+    <td><%= link_to 'Show', cart_line_item_path(@cart, line_item) %></td>
+    <td><%= link_to 'Edit', edit_cart_line_item_path(@cart, line_item) %></td>
+    <td><%= link_to 'Destroy', cart_line_item_path(@cart, line_item), confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to 'Checkout', checkout_cart_path(@cart) %>
+<br />
+Total: <%= number_to_currency @cart.total %>
