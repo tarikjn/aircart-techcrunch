@@ -72,4 +72,9 @@ class Product < ActiveRecord::Base
   
   end
   
+  # def picture_url
+  #     a = URI.encode self['picture_url'][7..-1]
+  #     "http://images.weserv.nl/?url=#{a}&w=150"
+  #   end
+  
 end
