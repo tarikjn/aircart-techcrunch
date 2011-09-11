@@ -12,9 +12,10 @@
 
 <script type="text/javascript">
 (function() {
+	
 	var cartModel = new Backbone.Model({
 		"id":<%= @cart.id %>,
-		"line_items":new Backbone.Collection([])
+		"line_items":new AirCart.Collections.LineItems([])
 	});
 	var cartView = new AirCart.Views.Cart({
 		"el":$("#cart_<%= @cart.id %>"),

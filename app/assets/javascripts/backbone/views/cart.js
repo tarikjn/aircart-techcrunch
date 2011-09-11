@@ -20,8 +20,8 @@ AirCart.Views.Cart = Backbone.View.extend({
 	},
 	
 	addItem : function(lineItem) {
-		var el = $(this.template(lineItem));
-		
+		this.$('ul').append(this.template(lineItem));
+		var el = this.$('#item_' + lineItem.id)[0];
 		var itemView = new AirCart.Views.LineItem({
 			"model":lineItem,
 			"el":el

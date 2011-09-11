@@ -17,6 +17,6 @@ AirCart.Views.LineItem = Backbone.View.extend({
 	},
 	
 	onQuantityChange : function(lineItem, quantity) {
-		this.$(".qty").html(quantity);
+		this.$(".quantity").html(quantity);
 	}
 });

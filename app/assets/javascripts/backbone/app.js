@@ -4,6 +4,7 @@
 	var AirCart = {};
 	AirCart.Routers = {};
 	AirCart.Models = {};
+	AirCart.Collections = {};
 	AirCart.Views = {};
 	
 	AirCart._models = {};

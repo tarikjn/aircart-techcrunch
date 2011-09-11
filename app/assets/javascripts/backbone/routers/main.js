@@ -10,6 +10,9 @@ AirCart.Routers.Main = Backbone.Router.extend({
 		
 		// right away synchronize the model
 		var cartId = this.model.get('id');
+		
+		//HACK, hard code the cart ID!
+		AirCart._cartId = cartId;
 		$.getJSON('/carts/' + cartId + '/line_items.json', _.bind(function(items, status, request) { 
 			this.model.get('line_items').add(items);
 		}, this));
@@ -20,8 +23,15 @@ AirCart.Routers.Main = Backbone.Router.extend({
 		
 		var onSuccess = function(item, status, request) {
 			var items = this.model.get('line_items');
-			var lineItem = new Backbone.Model(item);
-			items.add(lineItem);
+			var itemInCart = false;
+			if ((itemInCart = items.get(item.id))) {
+				// cart already has this line item, so update quantity
+				itemInCart.set({"quantity":item.quantity});
+			}
+			else {
+				var lineItem = new AirCart.Models.LineItem(item);
+				items.add(lineItem);
+			}
 		};
 		$.post('/carts/'+cartId+'/line_items', {
 			"line_item" : {
