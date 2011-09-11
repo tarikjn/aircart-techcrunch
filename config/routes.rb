@@ -1,6 +1,10 @@
 Aircart::Application.routes.draw do
 
   resources :carts do
+    
+    member do
+      get 'checkout'
+    end
   
     resources :line_items
   
