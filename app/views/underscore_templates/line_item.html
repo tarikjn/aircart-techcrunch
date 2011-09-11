@@ -1,12 +1,15 @@
-<li id="item_{{attributes.id}}" class="media">
-	<i class="img product_img ras" style="background: url('{{attributes.product.picture_url}}');"></i>
+<li id="item_{{attributes.id}}" class="media product">
+	<div class="img product_img_container center">
+		<i class="product_img ras" style="background-image: url('{{attributes.product.picture_url}}');"></i><br />
+		<span class="center cost">${{parseFloat((attributes.product.price * attributes.quantity)/100).toFixed(2)}}</span>
+	</div>
 	<div class="bd">
-		<h3>{{attributes.product.name}}</h3>
-		<h4>Quantity: <span class="quantity">{{ attributes.quantity }}</span></h4>
+		<h3 class="product_title">{{attributes.product.name.substring(0, Math.min(12, attributes.product.name.length))}}</h3>
+		<h4 class="price subtle">${{parseFloat((attributes.product.price)/100).toFixed(2)}} each</h4>
 		<p>
-			<a href="javascript:void(0);" class="button remove">Remove</a>
-			<a href="javascript:void(0);" class="button qty" data-amount="1">+</a>
-			<a href="javascript:void(0);" class="button qty" data-amount="-1">-</a>
+			<a href="javascript:void(0);" class="button qty fr ras center" data-amount="1">+</a>
+			<a href="javascript:void(0);" class="button qty fl ras center" data-amount="-1">-</a>
+			<h5 class="center"><span class="quantity">{{ attributes.quantity }}</span></h4>
 		</p>
 	</div>
 </li>

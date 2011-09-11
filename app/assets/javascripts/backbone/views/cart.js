@@ -7,6 +7,7 @@ AirCart.Views.Cart = Backbone.View.extend({
 		this.template = _.template(options.template);
 		
 		this.model.get('line_items').bind("add", this.addItem);
+		this.model.get('line_items').bind("change:quantity", this.onQuantityChange);
 		this.render();
 	},
 	
@@ -27,6 +28,17 @@ AirCart.Views.Cart = Backbone.View.extend({
 			"el":el
 		});
 		this.$('ul').append(el);
+		this.onQuantityChange();
+	},
+	
+	onQuantityChange : function() {
+		//recalculate total
+		var total = 0;
+		this.model.get('line_items').each(function(item) {
+			var cost = item.get('quantity') * item.get('product').price;
+			total += cost;
+		});
+		$("#total").html(parseFloat(total/100).toFixed(2));
 	}
 	
 });
