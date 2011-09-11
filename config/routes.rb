@@ -2,9 +2,7 @@ Aircart::Application.routes.draw do
 
   resources :carts do
   
-    member do
-      resources :line_items
-    end
+    resources :line_items
   
   end
 

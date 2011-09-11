@@ -1,9 +1,11 @@
 <h1>Listing line_items</h1>
+<p>For cart: <%= @cart.email %></p>
 
 <table>
   <tr>
-    <th>Cart</th>
+	<th>Picture</th>
     <th>Product</th>
+	<th>Price</th>
     <th>Quantity</th>
     <th></th>
     <th></th>
@@ -12,16 +14,16 @@
 
 <% @line_items.each do |line_item| %>
   <tr>
-    <td><%= line_item.cart %></td>
-    <td><%= line_item.product %></td>
+	<td><%= image_tag line_item.product.picture_url %></td>
+    <td><%= line_item.product.name %></td>
+    <td><%= line_item.product.price %></td>
     <td><%= line_item.quantity %></td>
-    <td><%= link_to 'Show', line_item %></td>
-    <td><%= link_to 'Edit', edit_line_item_path(line_item) %></td>
-    <td><%= link_to 'Destroy', line_item, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Edit', edit_cart_line_item_path(@cart, line_item) %></td>
+    <td><%= link_to 'Destroy', cart_line_item_path(@cart, line_item), confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Line item', new_line_item_path %>
+<%= link_to 'New Line item', new_cart_line_item_path(@cart) %>

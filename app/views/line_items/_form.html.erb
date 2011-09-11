@@ -1,4 +1,5 @@
-<%= form_for(@line_item) do |f| %>
+<%= form_for([@cart, @line_item]) do |f| %>
+	<%= f.hidden_field :cart_id %>
   <% if @line_item.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@line_item.errors.count, "error") %> prohibited this line_item from being saved:</h2>
@@ -12,12 +13,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :cart %><br />
-    <%= f.text_field :cart %>
-  </div>
-  <div class="field">
-    <%= f.label :product %><br />
-    <%= f.text_field :product %>
+    <%= f.label :gtin %><br />
+    <%= f.text_field :gtin %>
   </div>
   <div class="field">
     <%= f.label :quantity %><br />

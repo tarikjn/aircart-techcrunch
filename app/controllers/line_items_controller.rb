@@ -1,8 +1,10 @@
 class LineItemsController < ApplicationController
+  before_filter :get_cart
+  
   # GET /line_items
   # GET /line_items.json
   def index
-    @line_items = LineItem.all
+    @line_items = @cart.line_items
 
     respond_to do |format|
       format.html # index.html.erb
@@ -24,7 +26,7 @@ class LineItemsController < ApplicationController
   # GET /line_items/new
   # GET /line_items/new.json
   def new
-    @line_item = LineItem.new
+    @line_item = LineItem.new(cart: @cart)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,11 +42,12 @@ class LineItemsController < ApplicationController
   # POST /line_items
   # POST /line_items.json
   def create
+    
     @line_item = LineItem.new(params[:line_item])
 
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to @line_item, notice: 'Line item was successfully created.' }
+        format.html { redirect_to cart_line_items_url(@cart), notice: 'Line item was successfully created.' }
         format.json { render json: @line_item, status: :created, location: @line_item }
       else
         format.html { render action: "new" }
@@ -60,7 +63,7 @@ class LineItemsController < ApplicationController
 
     respond_to do |format|
       if @line_item.update_attributes(params[:line_item])
-        format.html { redirect_to @line_item, notice: 'Line item was successfully updated.' }
+        format.html { redirect_to [@cart, @line_item], notice: 'Line item was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }
@@ -76,8 +79,13 @@ class LineItemsController < ApplicationController
     @line_item.destroy
 
     respond_to do |format|
-      format.html { redirect_to line_items_url }
+      format.html { redirect_to cart_line_items_url(@cart) }
       format.json { head :ok }
     end
+  end
+  
+private
+  def get_cart
+    @cart = Cart.find(params[:cart_id])
   end
 end

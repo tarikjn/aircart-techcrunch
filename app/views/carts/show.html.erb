@@ -4,7 +4,9 @@
   <b>Email:</b>
   <%= @cart.email %>
 </p>
-
+<p>
+	<%= link_to 'Content', cart_line_items_path(@cart) %>
+</p>
 
 <%= link_to 'Edit', edit_cart_path(@cart) %> |
 <%= link_to 'Back', carts_path %>

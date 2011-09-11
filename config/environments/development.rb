@@ -27,4 +27,7 @@ Aircart::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+  
+  # local caching...
+  config.action_controller.cache_store = :file_store, 'tmp/cache'
 end
