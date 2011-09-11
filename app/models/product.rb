@@ -45,7 +45,7 @@ class Product < ActiveRecord::Base
     Product.new({
       name: item['title'],
       gtin: item['gtin'],
-      price: item['inventories'][0]['price'],
+      price: item['inventories'][0]['price'] * 100,
       picture_url: item['images'][0]['link']
     });
   
