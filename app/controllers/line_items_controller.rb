@@ -44,6 +44,7 @@ class LineItemsController < ApplicationController
   def create
     
     @line_item = LineItem.new(params[:line_item])
+    @line_item.cart = @cart unless @line_item.cart
 
     respond_to do |format|
       if @line_item.save
