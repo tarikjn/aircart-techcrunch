@@ -31,7 +31,7 @@ AirCart.Views.Cart = Backbone.View.extend({
 		this.onQuantityChange();
 	},
 	
-	onQuantityChange : function() {
+	onQuantityChange : function(lineItem, newQuantity) {
 		//recalculate total
 		var total = 0;
 		this.model.get('line_items').each(function(item) {
@@ -39,6 +39,10 @@ AirCart.Views.Cart = Backbone.View.extend({
 			total += cost;
 		});
 		$("#total").html(parseFloat(total/100).toFixed(2));
+		
+		if (lineItem) {
+			window.scrollTo($("#item_"+lineItem.id).offset().top);
+		}
 	}
 	
 });
