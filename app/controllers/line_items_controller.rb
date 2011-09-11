@@ -43,8 +43,7 @@ class LineItemsController < ApplicationController
   # POST /line_items.json
   def create
     
-    @line_item = LineItem.new(params[:line_item])
-    @line_item.cart = @cart unless @line_item.cart
+    @line_item = @cart.add_or_update_line_item(params[:line_item])
 
     respond_to do |format|
       if @line_item.save

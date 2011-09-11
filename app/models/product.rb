@@ -58,8 +58,12 @@ class Product < ActiveRecord::Base
       # process
       product = Product.process_from_google(item)
       
-      # save
-      product.save
+      if prev_product = Product.find_by_gtin(product.gtin)
+        product = prev_product
+      else
+        # save
+        product.save
+      end
       
       # return
       product
