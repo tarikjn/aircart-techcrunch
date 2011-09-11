@@ -20,7 +20,6 @@
     <th>Quantity</th>
     <th></th>
     <th></th>
-    <th></th>
   </tr>
 
 <% @cart.line_items.each do |line_item| %>
@@ -29,7 +28,6 @@
     <td><%= line_item.product.name %></td>
     <td><%= line_item.product.price %></td>
     <td><%= line_item.quantity %></td>
-    <td><%= link_to 'Show', cart_line_item_path(@cart, line_item) %></td>
     <td><%= link_to 'Edit', edit_cart_line_item_path(@cart, line_item) %></td>
     <td><%= link_to 'Destroy', cart_line_item_path(@cart, line_item), confirm: 'Are you sure?', method: :delete %></td>
   </tr>
@@ -39,3 +37,12 @@
 <%= link_to 'Checkout', checkout_cart_path(@cart) %>
 <br />
 Total: <%= number_to_currency @cart.total %>
+<h2>Payment</h2>
+<% if @cart.paid %>
+	Already paid!
+<% else %>
+	<%= form_for @cart, :url => pay_cart_path(@cart), :html => { :method => :put } do |f| %>
+		<%= hidden_field_tag :_method, 'PUT' %>
+		<button type="submit">Paid</button>
+	<% end %>
+<% end %>

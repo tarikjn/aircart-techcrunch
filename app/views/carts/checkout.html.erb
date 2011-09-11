@@ -1,2 +1,11 @@
+<h2>Check-out</h2>
 <%= image_tag "https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=#{cart_url(@cart)}" %>
-<%= link_to "Back to cart", cart_path(@cart) %>
+<h2>Total</h2>
+<div class="total">
+	<span class="currency">$</span><span class="e"><%= (@cart.total / 100).to_i %></span><span class="cents"><%= (@cart.total % 100) %></span>
+	
+</div>
+<h2>State</h2>
+<div>
+	<%= @cart.paid ? "Payment done, thank you!":"Waiting for cashier..." %>
+</div>

@@ -11,12 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110910232325) do
+ActiveRecord::Schema.define(:version => 20110911094408) do
 
   create_table "carts", :force => true do |t|
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "paid"
   end
 
   create_table "line_items", :force => true do |t|
