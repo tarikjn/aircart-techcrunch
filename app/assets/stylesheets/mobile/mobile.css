@@ -2,8 +2,9 @@
    v2.0 | 20110126
    License: none (public domain)
  *= require_self
- *= require ./mwa
+ *= require_directory .
 */
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -17,33 +18,171 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup, 
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
-	display: block;
+    display: block;
 }
 body {
-	line-height: 1;
+    line-height: 1;
 }
 ol, ul {
-	list-style: none;
+    list-style: none;
 }
 blockquote, q {
-	quotes: none;
+    quotes: none;
 }
 blockquote:before, blockquote:after,
 q:before, q:after {
-	content: '';
-	content: none;
+    content: '';
+    content: none;
 }
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
 }
+
+/*
+Copyright (c) 2009, Nicole Sullivan. All rights reserved.
+Code licensed under the BSD License:
+version: 0.2
+*/
+/* **************** BLOCK STRUCTURES ***************** */
+/* mod */
+.mod{margin:10px;}
+.mod .inner{/*background: url(skin/transparent.png) repeat left top;*/}
+.bd,.ft, .hd{display: inline-block; width:100%; *display:block; *width:auto; zoom:1;}
+.inner:after,.hd:after,.bd:after,.ft:after{clear:both;display:block;visibility:hidden;overflow:hidden;height:0 !important;line-height:0;font-size:xx-large;content:" x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x ";}
+.inner{position:relative;}
+b{display:block;background-repeat:no-repeat;font-size:1%;position:relative;z-index:10;}
+.tl, .tr, .bl, .br{height:10px; width:10px;float:left;}
+.tl{background-position: left top;}
+.tr{background-position: right top;}
+.bl{background-position: left bottom;}
+.br{background-position: right bottom;}
+.br,.tr{float:right;}
+.tr, .tl{overflow:hidden;margin-bottom:-32000px;}/* margin bottom needs to be < -9px */
+.bl,.br{margin-top:-10px;}
+.top{background-position:center top;}
+.bottom{background-position:center bottom;_zoom:1;}/* this zoom required for IE5.5 only*/
+/* complex */
+.complex{overflow:hidden;*position:relative;*zoom:1;}/* position/zoom required for IE7, 6, 5.5 */
+.complex .tl, .complex .tr{height:32000px; margin-bottom:-32000px;width:10px;}
+.complex .bl, .complex .br{/*margin-top:0;*/}
+.complex .top{height:5px;}
+.complex .bottom{height:5px;/*margin-top:-10px;*/}
+/* pop */
+.pop{overflow:visible;margin: 10px 20px 20px 10px; background-position:left top;}
+.pop .inner{right:-10px; bottom:-10px; background-position:right bottom;padding:0 10px 10px 0;}
+.pop .tl, .pop .br{display:none;}
+.pop .bl{bottom:-10px;}
+.pop .tr{float:right;margin-right:-10px;_display:inline;/fix double margin bug/}
+
+/* Grid Framework a la Nicole Sullivan
+ * http://stubbornella.org/
+ * retrieved 22 July 2011 by Bryan 
+ */
+.line:before,.line:after{content:"";display:table;}
+.line:after{clear:both;}
+.line{*zoom:1;}
+.unit{float:left; -webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
+.unitRight{float:right;}
+.size1of1{float:none;}
+.size1of2{width:50%;}
+.size1of3{width:33.33333%;}
+.size2of3{width:66.66666%;}
+.size1of4{width:25%;}
+.size3of4{width:75%;}
+.size1of5{width:20%;}
+.size2of5{width:40%;}
+.size3of5{width:60%;}
+.size4of5{width:80%;}
+.size1of10{width:10%;}
+.size3of10{width:30%;}
+.size7of10{width:70%;}
+.size9of10{width:90%;}
+.lastUnit{float:none;display:block;display:table-cell;width:9999em;*width:auto;*zoom:1;_position:relative;_left:-3px;_margin-right:-3px;}
+
+/* Media Block implementation by Nicole Sullivan
+ */
+/*.media{margin:10px;}*/
+.media:after, .bd:after{clear:both;display:block;visibility:hidden;overflow:hidden;height:0 !important;line-height:0;font-size:xx-large;content:" x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x ";}
+.media .bd{display:table-cell; zoom:1;}
+.media .bd > :first-child{margin-top:0;}
+.media .bd > :last-child{margin-bottom:0;}
+.media .img{float:left;/*margin-right: 10px;*/}
+.media .img img{display:block;}
+.media .imgExt{float:right; /*margin-left: 10px;*/}
+
+/** 
+ * Spacing classes 
+ * Should be used to modify the default spacing between objects (not between nodes of the same object)
+ * Please use judiciously. You want to be using defaults most of the time, these are exceptions! 
+ * <type><location><size>
+ */
+ /* ====== Default spacing ====== */
+h1, h2, h3, h4, h5, h6, ul, ol,dl, p,blockquote, details, .media {margin:10px;}
+h1, h2, h3, h4, h5, h6,img{padding-bottom:0px;}
+pre{margin: 10px;}
+table h1,table h2,table h3, table h4, table h5, table h6, table p, table ul, table ol, table dl{padding:0;}
+ 
+/* spacing helpers
+p,m = padding,margin
+a,t,r,b,l,h,v = all,top,right,bottom,left,horizontal,vertical
+s,m,l,n = small(5px),medium(10px),large(20px),none(0px)
+*/
+
+.ptn,.pvn,.pan{padding-top:0px}
+.pts,.pvs,.pas{padding-top:5px}
+.ptm,.pvm,.pam{padding-top:10px}
+.ptl,.pvl,.pal{padding-top:20px}
+.prn,.phn,.pan{padding-right:0px}
+.prs,.phs,.pas{padding-right:5px}
+.prm,.phm,.pam{padding-right:10px}
+.prl,.phl,.pal{padding-right:20px}
+.pbn,.pvn,.pan{padding-bottom:0px}  
+.pbs,.pvs,.pas{padding-bottom:5px}
+.pbm,.pvm,.pam{padding-bottom:10px}
+.pbl,.pvl,.pal{padding-bottom:20px}
+.pln,.phn,.pan{padding-left:0px}
+.pls,.phs,.pas{padding-left:5px}
+.plm,.phm,.pam{padding-left:10px}
+.pll,.phl,.pal{padding-left:20px}
+.mtn,.mvn,.man{margin-top:0px}
+.mts,.mvs,.mas{margin-top:5px}
+.mtm,.mvm,.mam{margin-top:10px}
+.mtl,.mvl,.mal{margin-top:20px}
+.mrn,.mhn,.man{margin-right:0px}
+.mrs,.mhs,.mas{margin-right:5px}
+.mrm,.mhm,.mam{margin-right:10px}
+.mrl,.mhl,.mal{margin-right:20px}
+.mbn,.mvn,.man{margin-bottom:0px}  
+.mbs,.mvs,.mas{margin-bottom:5px}
+.mbm,.mvm,.mam{margin-bottom:10px}
+.mbl,.mvl,.mal{margin-bottom:20px}
+.mln,.mhn,.man{margin-left:0px}
+.mls,.mhs,.mas{margin-left:5px}
+.mlm,.mhm,.mam{margin-left:10px}
+.mll,.mhl,.mal{margin-left:20px}
+
+/* rounding helpers */
+.ras,.rls,.rts { border-top-left-radius:4px; }
+.ras,.rrs,.rts { border-top-right-radius:4px; }
+.ras,.rls,.rbs { border-bottom-left-radius:4px; }
+.ras,.rrs,.rbs { border-bottom-right-radius:4px; }
+.ram,.rlm,.rtm { border-top-left-radius:8px; }
+.ram,.rrm,.rtm { border-top-right-radius:8px; }
+.ram,.rlm,.rbm { border-bottom-left-radius:8px; }
+.ram,.rrm,.rbm { border-bottom-right-radius:8px; }
+.ral,.rll,.rtl { border-top-left-radius:16px; }
+.ral,.rrl,.rtl { border-top-right-radius:16px; }
+.ral,.rll,.rbl { border-bottom-left-radius:16px; }
+.ral,.rrl,.rbl { border-bottom-right-radius:16px; }
+

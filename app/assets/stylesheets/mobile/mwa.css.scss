@@ -1,3 +1,39 @@
 /**
  * aircart styles
  */
+.middle { margin-left:auto; margin-right:auto; }
+.fr { float:right; }
+.fl { float:left; }
+.center { text-align:center; }
+
+header, footer {
+	position:fixed;
+	left:0px; right:0px;
+	height:64px;
+	width:100%;
+	background-color:green;
+}
+header { top:0px; }
+footer { bottom:0px; }
+
+header .button, footer .button { 
+	display:block;
+	height:48px; line-height:48px;
+	width:192px;
+	background-color:white;
+	margin-top:8px; margin-bottom:8px;
+}
+
+body {
+	margin-top:64px; margin-bottom:64px;
+	font:normal 12px/16px Arial, Helvetica, sans-serif;
+	color:#333;
+}
+
+.product_img {
+	display:inline-block;
+	width:48px; height:48px;
+	background-color:#AAA;
+	border:1px solid grey;
+	-webkit-background-size: cover;
+}

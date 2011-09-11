@@ -14,6 +14,13 @@ AirCart.Models.LineItem = Backbone.Model.extend({
 			},
 			"dataType":"json"
 		});
+	},
+	remove : function() {
+		$.ajax({
+			"type":"DELETE",
+			"url":"/carts/" + AirCart._cartId + "/line_items/" + this.id + ".json",
+			"dataType":"json"
+		});
 	}
 });
 
