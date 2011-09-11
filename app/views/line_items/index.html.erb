@@ -18,6 +18,7 @@
     <td><%= line_item.product.name %></td>
     <td><%= line_item.product.price %></td>
     <td><%= line_item.quantity %></td>
+    <td><%= link_to 'Show', cart_line_item_path(@cart, line_item) %></td>
     <td><%= link_to 'Edit', edit_cart_line_item_path(@cart, line_item) %></td>
     <td><%= link_to 'Destroy', cart_line_item_path(@cart, line_item), confirm: 'Are you sure?', method: :delete %></td>
   </tr>
