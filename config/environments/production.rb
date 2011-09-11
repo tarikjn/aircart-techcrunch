@@ -57,4 +57,7 @@ Aircart::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+  
+  # store for Heroku's memcached
+  config.action_controller.cache_store = :dalli_store
 end
