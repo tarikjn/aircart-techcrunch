@@ -8,3 +8,12 @@ table.cart {
 		img {width: 100px;}
 	}
 }
+
+.total {
+	font-size: 2em;
+	vertical-align: baseline;
+	
+	.currency {}
+	.e { font-size: 2em; vertical-align: baseline; }
+	.cents { vertical-align: super; }
+}

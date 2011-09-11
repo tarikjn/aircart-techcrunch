@@ -83,5 +83,14 @@ class CartsController < ApplicationController
   end
   
   def checkout
+    @cart = Cart.find(params[:id])
+  end
+  
+  def pay
+    @cart = Cart.find(params[:id])
+    @cart.paid = true
+    @cart.save
+  
+    redirect_to @cart
   end
 end

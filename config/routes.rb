@@ -4,6 +4,7 @@ Aircart::Application.routes.draw do
     
     member do
       get 'checkout'
+      put 'pay'
     end
   
     resources :line_items
