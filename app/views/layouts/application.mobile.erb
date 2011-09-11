@@ -8,6 +8,7 @@
 	<title>Aircart</title>
 	<%= stylesheet_link_tag "mobile/mobile" %>
 	<%= javascript_include_tag "mobile/mobile" %>
+	<%= stylesheet_link_tag "support/iphone" unless android_device? %>
 </head>
 <body>
 <%= yield %>
