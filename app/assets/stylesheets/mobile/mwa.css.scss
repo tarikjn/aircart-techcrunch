@@ -34,7 +34,7 @@ body {
 }
 
 .product { border-bottom:1px solid #999; }
-
+.product.highlight { background-color:#FFFF99; }
 .product_img {
 	display:inline-block;
 	width:64px; height:64px;

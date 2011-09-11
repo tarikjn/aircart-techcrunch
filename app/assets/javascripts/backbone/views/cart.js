@@ -41,7 +41,7 @@ AirCart.Views.Cart = Backbone.View.extend({
 		$("#total").html(parseFloat(total/100).toFixed(2));
 		
 		if (lineItem) {
-			window.scrollTo($("#item_"+lineItem.id).offset().top);
+			$("#item_"+lineItem.id).trigger("focusItem");
 		}
 	}
 	
