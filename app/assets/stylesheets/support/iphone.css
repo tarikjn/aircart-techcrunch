@@ -1,0 +1,19 @@
+body header, body footer {
+	position:static;
+}
+body { 
+	margin-top:0px; margin-bottom:0px;
+}
+
+header form {
+	height:64px; line-height:64px; 
+}
+header form input[type="text"] {
+	height:32px; position:relative; top:-6px;
+	font-size:24px; width:128px;
+}
+
+body header .button { 
+	-webkit-appearance:none;
+	display:inline-block;  padding:0px; width:96px;
+}
