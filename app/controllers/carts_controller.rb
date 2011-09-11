@@ -14,6 +14,7 @@ class CartsController < ApplicationController
   # GET /carts/1.json
   def show
     @cart = Cart.find(params[:id])
+    @line_item = LineItem.new(cart: @cart)
 
     respond_to do |format|
       format.html # show.html.erb

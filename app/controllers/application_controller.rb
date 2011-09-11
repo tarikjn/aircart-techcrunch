@@ -13,6 +13,11 @@ private
     end
   end
   helper_method :mobile_device?
+  
+  def android_device?
+    request.user_agent =~ /Android/
+  end
+  helper_method :android_device?
 
   def prepare_for_mobile
     session[:mobile_param] = params[:mobile] if params[:mobile]

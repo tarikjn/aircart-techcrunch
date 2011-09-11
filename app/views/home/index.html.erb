@@ -1,2 +1,19 @@
-<h1>AirCart</h1>
-<p><%= link_to "Carts", carts_path %></p>
+
+
+<h2>Best sellers</h2>
+<ul class="gallery">
+	<% @products.each do |p| %>
+		<li>
+			<div class="image"><%= image_tag p.picture_url %><div>
+			<div class="price"><%= number_to_currency(p.price, :precision => 0) %></div>
+		</li>
+	<% end %>
+</ul>
+
+<%= form_for(@cart) do |f| %>
+  <div class="action">
+    <button type="submit" class="punch">Start shopping</button>
+  </div>
+<% end %>
+
+
