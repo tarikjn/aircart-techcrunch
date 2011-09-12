@@ -6,7 +6,7 @@
 	&:after { content: ""; display: block; height: 0; clear: both; }
 }
 
-body {
+body:not(.landing) {
 	width: 450px;
 	margin: 75px auto;
 }

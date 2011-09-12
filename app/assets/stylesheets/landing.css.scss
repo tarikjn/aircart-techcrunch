@@ -1,0 +1,125 @@
+// Place all the styles related to the landing controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@mixin clear-after {
+	&:after { content: ""; display: block; height: 0; clear: both; }
+}
+
+body.landing {
+	width: 100%;
+	margin: 0; padding: 0;
+	background: #ccc;
+	
+	.head {
+		background: white;
+		
+		
+		.content {
+			width: 780px;
+			margin: 0 auto;
+			padding: 75px 0 150px;
+		}
+		
+		.header {
+			h1 {
+				font-size: 3.5em;
+				margin: 0 0 .35em;
+				color: green;
+				.cart { color: green; }
+				
+			}
+			.tagline {
+				font-size: 125%;
+			}
+		}
+	
+		.follow {
+			font-size: 2em;
+			text-align: right;
+			margin: 50px 0 75px;
+		}
+	
+		.points {
+			@include clear-after;
+			> div {
+				float: left;
+				width: 260px;
+			
+				.title {
+					font-size: 175%;
+					color: green;
+				}
+				ul {
+					margin: 10px 0 0;
+					padding: 0;
+				
+					li {
+						list-style-type: none;
+						margin-top: .5em;
+					}
+				}
+			}
+		}
+	}
+	
+	.foot {
+		
+		.title {
+			text-shadow: 0px 1px 0px #e5e5ee;
+			color: #555;
+		}
+		
+		width: 100%;
+		background: #ccc;
+		
+		padding-top: 35px;
+		
+		.content {
+			width: 780px;
+			margin: 0 auto;
+		}
+		
+		.about {
+			.title {
+				font-size: 140%;
+				//padding-top: 100px;
+				//background: url(/assets/disrupt.png) no-repeat;
+			}
+			
+			ul {
+				//color: #555;
+				//@include clear-after;
+				//margin: 0; padding: 15px;
+				li {
+					font-size: 125%;
+					//padding: 15px;
+					list-style-type: square;
+					//float: left;
+					line-height: 1.55em;
+					font-style: italic;
+				}
+			}
+		}
+		
+		.team {
+			margin-top: 25px;
+			.title { font-size: 140%; }
+			ul {
+				@include clear-after;
+				margin: 0; padding: 15px;
+				li {
+					list-style-type: none;
+					float: left;
+					margin-right: 10px;
+				}
+				
+				a {
+					&:hover {
+						background: none;
+					}
+				}
+			}
+		}
+	}
+}
