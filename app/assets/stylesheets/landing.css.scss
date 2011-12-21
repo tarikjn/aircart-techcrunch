@@ -54,6 +54,7 @@ body.landing {
 		.points {
 			
 			margin-top: 75px;
+			margin-bottom:8px;
 			@include clear-after;
 			> div {
 				float: left;
